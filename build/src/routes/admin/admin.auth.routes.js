@@ -27,4 +27,4 @@ exports.AdminRouter = void 0;
 const express_1 = require("express");
 const AdminController = __importStar(require("../../controller/admin/admin.auth.controller"));
 exports.AdminRouter = (0, express_1.Router)();
-exports.AdminRouter.get('/', AdminController.index);
+exports.AdminRouter.get("/", AdminController.index);
