@@ -8,3 +8,11 @@ export interface IAdmin {
   password: string;
   role: string;
 }
+
+export interface IAdminCreateUpdate {
+  name: string;
+  email: string;
+  phone: number;
+  password: string;
+  role: string;
+}

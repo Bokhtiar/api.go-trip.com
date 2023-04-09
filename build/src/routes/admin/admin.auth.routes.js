@@ -26,5 +26,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminRouter = void 0;
 const express_1 = require("express");
 const AdminController = __importStar(require("../../controller/admin/admin.auth.controller"));
+const auth_validators_1 = require("../../validators/admin/auth.validators");
 exports.AdminRouter = (0, express_1.Router)();
-exports.AdminRouter.get("/", AdminController.register);
+exports.AdminRouter.post("/register", auth_validators_1.adminRegistrationValidators, AdminController.register);

@@ -9,18 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = void 0;
-const register = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { name, email, phone, password, role } = req.body;
-        res.status(200).json({
-            status: true,
-            message: "New admin created."
-        });
-    }
-    catch (error) {
-        console.log(error);
-        next(error);
-    }
+exports.findOneById = exports.findOneByKey = void 0;
+const admin_model_1 = require("../../model/admin.model");
+/* specific resource findOneByKey */
+const findOneByKey = (params) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield admin_model_1.Admin.findOne(Object.assign({}, params));
 });
-exports.register = register;
+exports.findOneByKey = findOneByKey;
+/*specific resource findOneById */
+const findOneById = ({ _id }) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield admin_model_1.Admin.findById({ _id });
+});
+exports.findOneById = findOneById;
