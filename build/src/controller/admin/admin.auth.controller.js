@@ -9,19 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.index = void 0;
-const index = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.register = void 0;
+const register = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.status(200).json({
             status: true,
-            message: "message"
+            message: "New admin registration."
         });
     }
     catch (error) {
-        if (error) {
-            console.log(error);
-            next(error);
-        }
+        console.log(error);
+        next(error);
     }
 });
-exports.index = index;
+exports.register = register;
