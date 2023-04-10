@@ -1,6 +1,6 @@
 import { Types } from 'mongoose'
 import { Admin } from '../../model/admin.model'
-import { IAdmin } from '../../types/admin.types'
+import { IAdminCreateUpdate, IAdmin } from '../../types/admin.types'
 
 /* specific resource findOneByKey */
 export const findOneByKey = async (params: any): Promise<IAdmin | null> => {
@@ -10,4 +10,16 @@ export const findOneByKey = async (params: any): Promise<IAdmin | null> => {
 /*specific resource findOneById */
 export const findOneById = async ({ _id }: { _id: Types.ObjectId }): Promise<IAdmin | null> => {
     return await Admin.findById({ _id });
+}
+
+/* store new document */
+export const storeDocuments = async ({ documents }: { documents: IAdminCreateUpdate }): Promise<IAdmin | null> => {
+    const newAdmin = new Admin({
+        name: documents.name,
+        email: documents.email,
+        phone: documents.phone,
+        password: documents.password,
+        role: documents.role,
+    })
+   return await newAdmin.save();
 }
