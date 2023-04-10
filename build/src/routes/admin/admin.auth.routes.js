@@ -28,4 +28,5 @@ const express_1 = require("express");
 const AdminController = __importStar(require("../../controller/admin/admin.auth.controller"));
 const auth_validators_1 = require("../../validators/admin/auth.validators");
 exports.AdminRouter = (0, express_1.Router)();
+exports.AdminRouter.post("/login", auth_validators_1.adminLoginValidators, AdminController.login);
 exports.AdminRouter.post("/register", auth_validators_1.adminRegistrationValidators, AdminController.register);

@@ -12,9 +12,36 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.adminRegistrationValidators = void 0;
+exports.adminRegistrationValidators = exports.adminLoginValidators = void 0;
 const async_validator_1 = __importDefault(require("async-validator"));
-/* Resource create & update validaor */
+/* admin login validators */
+const adminLoginValidators = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const descriptor = {
+        email: {
+            type: "string",
+            required: true,
+            message: "Email is required.",
+        },
+        password: {
+            type: "string",
+            required: true,
+            message: "Password is required.",
+        },
+    };
+    /* Execute the validator */
+    const validator = new async_validator_1.default(descriptor);
+    validator.validate(Object.assign({}, req.body), (errors) => {
+        if (errors) {
+            return res.status(422).json({
+                status: false,
+                errors,
+            });
+        }
+        next();
+    });
+});
+exports.adminLoginValidators = adminLoginValidators;
+/* admin registration validators */
 const adminRegistrationValidators = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const descriptor = {
         name: {
