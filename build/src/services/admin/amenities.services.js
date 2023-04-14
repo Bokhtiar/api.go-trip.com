@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findOneByIdDelete = exports.findOneByUpdate = exports.storeDocuments = exports.findOneByKey = exports.findById = exports.resourceList = void 0;
+exports.adminAmenitesServices = exports.findOneByIdDelete = exports.findOneByUpdate = exports.storeDocuments = exports.findOneByKey = exports.findById = exports.findAll = void 0;
 const amenities_model_1 = require("../../model/amenities.model");
 /* list of resource */
-const resourceList = () => __awaiter(void 0, void 0, void 0, function* () {
+const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
     return yield amenities_model_1.Amenities.find();
 });
-exports.resourceList = resourceList;
+exports.findAll = findAll;
 /* specifiic resource findOneById */
 const findById = ({ _id }) => __awaiter(void 0, void 0, void 0, function* () {
     return yield amenities_model_1.Amenities.findById({ _id });
@@ -32,7 +32,7 @@ const storeDocuments = ({ documents }) => __awaiter(void 0, void 0, void 0, func
         name: documents.name,
         icon: documents.icon
     });
-    return yield newAmenites;
+    return yield newAmenites.save();
 });
 exports.storeDocuments = storeDocuments;
 /* specific resource updated */
@@ -50,3 +50,11 @@ const findOneByIdDelete = ({ _id }) => __awaiter(void 0, void 0, void 0, functio
     return yield amenities_model_1.Amenities.findByIdAndDelete({ _id });
 });
 exports.findOneByIdDelete = findOneByIdDelete;
+exports.adminAmenitesServices = {
+    findAll: exports.findAll,
+    findById: exports.findById,
+    findOneByKey: exports.findOneByKey,
+    storeDocuments: exports.storeDocuments,
+    findOneByUpdate: exports.findOneByUpdate,
+    findOneByIdDelete: exports.findOneByIdDelete
+};

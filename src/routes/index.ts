@@ -6,4 +6,4 @@ import { AmenitiesRoute } from "./admin/amenities.routes";
 export const AppRouter: Router = Router();
 
 AppRouter.use("/admin/auth", AdminRouter);  
-AppRouter.use("/amenities",adminPermission, AmenitiesRoute)
+AppRouter.use("/amenities",adminPermission, AmenitiesRoute) 

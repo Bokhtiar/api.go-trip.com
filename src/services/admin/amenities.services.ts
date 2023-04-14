@@ -3,7 +3,7 @@ import { Amenities } from '../../model/amenities.model'
 import { IAmenities, IAmenitiesCreateUpdate } from '../../types/admin/amenities.types'
 
 /* list of resource */
-export const resourceList = async (): Promise<IAmenities[] | []> => {
+export const findAll = async (): Promise<IAmenities[] | []> => {
     return await Amenities.find()
 }
 
@@ -23,7 +23,7 @@ export const storeDocuments = async ({ documents }: { documents: IAmenitiesCreat
         name: documents.name,
         icon: documents.icon
     })
-    return await newAmenites
+    return await newAmenites.save()
 }
 
 /* specific resource updated */
@@ -39,4 +39,13 @@ export const findOneByUpdate = async ({ _id, documents }: { _id: Types.ObjectId,
 /* specific resoruce delete */
 export const findOneByIdDelete = async ({ _id }: { _id: Types.ObjectId }): Promise<IAmenities | null> => {
     return await Amenities.findByIdAndDelete({ _id })
+}
+
+export const adminAmenitesServices = {
+    findAll,
+    findById,
+    findOneByKey,
+    storeDocuments,
+    findOneByUpdate,
+    findOneByIdDelete
 }

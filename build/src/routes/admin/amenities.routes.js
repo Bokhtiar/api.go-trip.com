@@ -28,3 +28,7 @@ const express_1 = require("express");
 const amenitiesController = __importStar(require("../../controller/admin/amenities.controller"));
 exports.AmenitiesRoute = (0, express_1.Router)();
 exports.AmenitiesRoute.get('/', amenitiesController.Index);
+exports.AmenitiesRoute.post('/', amenitiesController.Store);
+exports.AmenitiesRoute.get('/:id', amenitiesController.Show);
+exports.AmenitiesRoute.put('/:id', amenitiesController.Update);
+exports.AmenitiesRoute.delete('/:id', amenitiesController.Destroy);
