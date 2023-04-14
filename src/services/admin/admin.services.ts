@@ -23,3 +23,4 @@ export const storeDocuments = async ({ documents }: { documents: IAdminCreateUpd
     })
    return await newAdmin.save();
 }
+
