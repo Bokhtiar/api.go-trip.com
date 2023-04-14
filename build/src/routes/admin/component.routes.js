@@ -23,13 +23,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AmenitiesRoute = void 0;
+exports.ComponentRoutes = void 0;
 const express_1 = require("express");
-const amenities_validators_1 = require("../../validators/admin/amenities.validators");
-const amenitiesController = __importStar(require("../../controller/admin/amenities.controller"));
-exports.AmenitiesRoute = (0, express_1.Router)();
-exports.AmenitiesRoute.get('/', amenitiesController.Index);
-exports.AmenitiesRoute.post('/', amenities_validators_1.amenitiesValidators, amenitiesController.Store);
-exports.AmenitiesRoute.get('/:id', amenitiesController.Show);
-exports.AmenitiesRoute.put('/:id', amenities_validators_1.amenitiesValidators, amenitiesController.Update);
-exports.AmenitiesRoute.delete('/:id', amenitiesController.Destroy);
+const ComponentController = __importStar(require("../../controller/admin/component.controller"));
+exports.ComponentRoutes = (0, express_1.Router)();
+exports.ComponentRoutes.get("/", ComponentController.Index);
+exports.ComponentRoutes.post("/", ComponentController.Store);
