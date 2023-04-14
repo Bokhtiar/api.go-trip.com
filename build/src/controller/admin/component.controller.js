@@ -9,14 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Store = exports.Index = void 0;
+exports.Destroy = exports.Update = exports.Show = exports.Store = exports.Index = void 0;
 const component_services_1 = require("../../services/admin/component.services");
+const mongoose_1 = require("mongoose");
 /* resource list */
 const Index = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const results = yield component_services_1.adminComponentServices.findAll();
         return res.status(200).json({
             status: true,
-            message: "Copoment List",
+            data: results
         });
     }
     catch (error) {
@@ -53,3 +55,62 @@ const Store = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.Store = Store;
+/* specific resource show */
+const Show = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const result = yield component_services_1.adminComponentServices.findById({ _id: new mongoose_1.Types.ObjectId(id) });
+        return res.status(200).json({
+            status: true,
+            data: result
+        });
+    }
+    catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+exports.Show = Show;
+/* specific reosurce update */
+const Update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const { name, icon } = req.body;
+        /* check unique name */
+        const isNameExist = yield component_services_1.adminComponentServices.findOneByKey({ name: name });
+        if (isNameExist && isNameExist._id.toString() !== id) {
+            return res.status(409).json({
+                status: false,
+                message: "Already name is exist."
+            });
+        }
+        const documents = {
+            name, icon
+        };
+        yield component_services_1.adminComponentServices.findOneByUpdate({ _id: new mongoose_1.Types.ObjectId(id), documents });
+        return res.status(201).json({
+            status: true,
+            message: "Component Updated."
+        });
+    }
+    catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+exports.Update = Update;
+const Destroy = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        yield component_services_1.adminComponentServices.findOneByIdDelete({ _id: new mongoose_1.Types.ObjectId(id) });
+        return res.status(200).json({
+            status: true,
+            message: "Component deleted."
+        });
+    }
+    catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+exports.Destroy = Destroy;

@@ -29,3 +29,6 @@ const ComponentController = __importStar(require("../../controller/admin/compone
 exports.ComponentRoutes = (0, express_1.Router)();
 exports.ComponentRoutes.get("/", ComponentController.Index);
 exports.ComponentRoutes.post("/", ComponentController.Store);
+exports.ComponentRoutes.get("/:id", ComponentController.Show);
+exports.ComponentRoutes.put("/:id", ComponentController.Update);
+exports.ComponentRoutes.delete("/:id", ComponentController.Destroy);
