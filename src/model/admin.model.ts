@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose'
-import { IAdminCreateUpdate } from '../types/admin.types'
+import { IAdminCreateUpdate } from '../types/admin/admin.types'
 
 const AdminSchema: Schema = new Schema<IAdminCreateUpdate>({
     name: {

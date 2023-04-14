@@ -1,6 +1,6 @@
 import { Types } from 'mongoose'
 import { Admin } from '../../model/admin.model'
-import { IAdminCreateUpdate, IAdmin } from '../../types/admin.types'
+import { IAdminCreateUpdate, IAdmin } from '../../types/admin/admin.types'
 
 /* specific resource findOneByKey */
 export const findOneByKey = async (params: any): Promise<IAdmin | null> => {

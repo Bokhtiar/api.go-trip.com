@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 import { Request, Response, NextFunction } from "express";
-import { IAdminCreateUpdate } from "../../types/admin.types";
+import { IAdminCreateUpdate } from "../../types/admin/admin.types";
 import { findOneByKey, storeDocuments } from "../../services/admin/admin.services";
 
 /* admin login */
