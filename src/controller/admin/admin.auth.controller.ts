@@ -49,6 +49,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     next(error)
   }
 }
+
 /* admin registration */
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
