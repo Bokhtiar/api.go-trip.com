@@ -16,4 +16,4 @@ const amenitiesSchema = new Schema<IAmenitiesCreateUpdate>({
     timestamps: true
 })
 
-export const Amenities = model<IAmenities>("Amenities", amenitiesSchema)
+export const Amenities = model<IAmenitiesCreateUpdate>("Amenities", amenitiesSchema)
