@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.amenitiesValidators = void 0;
 const async_validator_1 = __importDefault(require("async-validator"));
-/* amenities login validators */
+/* extra services  validators */
 const amenitiesValidators = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const descriptor = {
         name: {
