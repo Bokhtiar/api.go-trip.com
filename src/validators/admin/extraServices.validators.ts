@@ -2,7 +2,7 @@ import Schema from "async-validator";
 import { NextFunction, Request, Response } from "express";
 
 /* extra services  validators */
-export const amenitiesValidators = async (
+export const extraServiceValidators = async (
     req: Request,
     res: Response,
     next: NextFunction
