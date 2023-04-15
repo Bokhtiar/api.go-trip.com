@@ -10,4 +10,4 @@ export const AppRouter: Router = Router();
 AppRouter.use("/admin/auth", AdminRouter);  
 AppRouter.use("/amenities",adminPermission, AmenitiesRoute)
 AppRouter.use("/component",adminPermission, ComponentRoutes) 
-AppRouter.use("/extra-service", ExtraServiceRoute)
+AppRouter.use("/extra-service", adminPermission, ExtraServiceRoute)

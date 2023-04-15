@@ -65,3 +65,52 @@ export const Show = async(req:Request, res:Response, next:NextFunction) => {
         next(error)
     }
 }
+
+/* specific resource update */
+export const Update = async(req:Request, res:Response, next:NextFunction) => {
+    try {
+        const {id} = req.params
+        const {name, icon} = req.body
+
+        /* cheeck unique name */
+        const isNameExist = await adminExtraService.findOneByKey({ name: name })
+        if (isNameExist && isNameExist._id.toString() !== id) {
+            return res.status(409).json({
+                status: false,
+                message: "Already name is exist."
+            })
+        }
+
+        const documents : IExaraServiceCreateUpdate = {
+            name,
+            icon
+        }
+
+        await adminExtraService.findOneByAndUpdate({_id: new Types.ObjectId(id), documents })
+
+        res.status(201).json({
+            status: true,
+            message: "ExtraService updated."
+        })
+    } catch (error:any) {
+        console.log(error);
+        next(error)
+    }
+}
+
+/* specific resource destroy */
+export const Destroy = async(req:Request, res:Response, next:NextFunction) => {
+    try {
+        const {id} = req.params
+        
+        await adminExtraService.findOneByAndDestroy({_id: new Types.ObjectId(id)})
+
+        return res.status(201).json({
+            status: true,
+            message: "ExtraService deleted."
+        })
+    } catch (error:any) {
+        console.log(error);
+        next(error)
+    }
+}

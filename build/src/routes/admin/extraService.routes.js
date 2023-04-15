@@ -31,3 +31,5 @@ exports.ExtraServiceRoute = (0, express_1.Router)();
 exports.ExtraServiceRoute.get('/', extraServiceController.Index);
 exports.ExtraServiceRoute.post('/', extraServices_validators_1.extraServiceValidators, extraServiceController.Store);
 exports.ExtraServiceRoute.get('/:id', extraServiceController.Show);
+exports.ExtraServiceRoute.put('/:id', extraServices_validators_1.extraServiceValidators, extraServiceController.Update);
+exports.ExtraServiceRoute.delete('/:id', extraServiceController.Destroy);
