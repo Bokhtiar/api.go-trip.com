@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /* Web auth routes */
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -22,8 +23,9 @@ Route::group(["as" => 'user.', "prefix" => 'user', "middleware" => ['auth', 'use
 Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'admin']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
     /* category */
-    Route::resource('category', CategoryController::class);
+    Route::resource('category', CategoryController::class)->only([
+        'index', 'store', 'edit', 'update', 'destroy'
+    ]);
 
     Route::get('/logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
 });
-

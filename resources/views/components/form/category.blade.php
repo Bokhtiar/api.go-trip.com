@@ -29,7 +29,7 @@
         {{-- submit button --}}
         <div class="text-center">
             @if (@$edit)
-                @component('components.button.sumbit_button', [
+                @component('components.button.submit_button', [
                     'name' => 'category update',
                 ])
                 @endcomponent

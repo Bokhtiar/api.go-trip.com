@@ -25,8 +25,8 @@
                                     <td>
                                         <a class="btn btn-sm btn-success" href="@route('admin.category.edit', $category->category_id)"><i
                                                 class="bi bi-pencil-square"></i></a> <!-- edit -->
-                                        <a class="btn btn-sm btn-success" href="@route('admin.category.show', $category->category_id)"><i
-                                                class="bi bi-eye"></i></a> <!-- show -->
+                                        {{-- <a class="btn btn-sm btn-success" href="@route('admin.category.show', $category->category_id)"><i
+                                                class="bi bi-eye"></i></a> <!-- show --> --}}
 
                                         <form action="@route('admin.category.destroy', $category->category_id)" method="POST">
                                             @method('DELETE')
