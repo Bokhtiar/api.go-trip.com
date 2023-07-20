@@ -25,6 +25,12 @@
                         <i class="bi bi-circle"></i><span>Categories</span>
                     </a>
                 </li>
+
+                 <li>
+                    <a href="@route('admin.amenity.index')">
+                        <i class="bi bi-circle"></i><span>Amenities</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <!-- room end -->

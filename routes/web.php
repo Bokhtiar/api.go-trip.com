@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AmenitiesContoroller;
 use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,8 +23,14 @@ Route::group(["as" => 'user.', "prefix" => 'user', "middleware" => ['auth', 'use
 /* Admin auth routes */
 Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'admin']], function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
+    
     /* category */
     Route::resource('category', CategoryController::class)->only([
+        'index', 'store', 'edit', 'update', 'destroy'
+    ]);
+
+    /* amenities */
+    Route::resource('amenity', AmenitiesContoroller::class)->only([
         'index', 'store', 'edit', 'update', 'destroy'
     ]);
 
