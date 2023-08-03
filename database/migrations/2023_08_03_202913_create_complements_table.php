@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('complements', function (Blueprint $table) {
             $table->id('complement_id');
             $table->string('name')->require()->unique();
+            $table->string('slug')->require()->unique();
             $table->longText('items')->require();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

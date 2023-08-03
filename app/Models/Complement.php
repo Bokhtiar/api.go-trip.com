@@ -13,6 +13,7 @@ class Complement extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'items',
     ];
 }
