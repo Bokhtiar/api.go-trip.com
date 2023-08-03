@@ -31,6 +31,12 @@
                         <i class="bi bi-circle"></i><span>Amenities</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="@route('admin.complement.index')">
+                        <i class="bi bi-circle"></i><span>Complement</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <!-- room end -->

@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\AmenitiesContoroller;
-use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\AmenitiesContoroller;
+use App\Http\Controllers\Admin\ComplementController;
 
 /* Web auth routes */
 
@@ -31,6 +32,11 @@ Route::group(["as" => 'admin.', "prefix" => 'admin', "middleware" => ['auth', 'a
 
     /* amenities */
     Route::resource('amenity', AmenitiesContoroller::class)->only([
+        'index', 'store', 'edit', 'update', 'destroy'
+    ]);
+
+    /* complement */
+    Route::resource('complement', ComplementController::class)->only([
         'index', 'store', 'edit', 'update', 'destroy'
     ]);
 
